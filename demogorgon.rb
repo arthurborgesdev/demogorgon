@@ -10,17 +10,24 @@ bot.command :down do |event, number|
 end
 
 bot.command(:rand, description: 'Generates a random number 1 and max') do |_event, max|
-    downDice = rand(1...max.to_i).to_s
+    downDice = rand(1..max.to_i).to_s
     "dices are down by " + downDice
 end
 
 bot.command(:dice) do |event|
-    "dices are down by " + downDice.to_s
+    event << "dices are down by " + downDice.to_s
 end
 
-#event.channel.history(2).each { |msg| puts msg }
-    #if hist[1][0..1] == "/r" 
-    #    puts hist[1] 
-    #end
-#    return nil
+bot.message() do |event|
+    embedResult = event.message.embeds
+    # event << downDice
+    # event << embedResult
+    if embedResult.any? # change this in the future to detect roll dices of Rod bot
+        rodDice = embedResult[0].description.split(" = ")[1]
+        # event << rodDice
+        # event << downDice
+        event << "Your dice is now " + (rodDice.to_i - downDice.to_i).to_s
+    end
+end
+
 bot.run
