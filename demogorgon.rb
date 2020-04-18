@@ -2,16 +2,25 @@ require "discordrb"
 
 bot = Discordrb::Commands::CommandBot.new token: ENV["DEMOGORGON_TOKEN"], prefix: "/demo "
 
-lastDown = 0
+downDice = 0
 
 bot.command :down do |event, number|
-    event << "dices are down by " + number
-    event.channel.history(2).each { |msg| event << msg }
-    return nil
+    downDice = number
+    "dices are down by " + downDice
 end
 
 bot.command(:rand, description: 'Generates a random number 1 and max') do |_event, max|
-    "dices are down by " + rand(1...max.to_i).to_s
+    downDice = rand(1...max.to_i).to_s
+    "dices are down by " + downDice
 end
 
+bot.command(:dice) do |event|
+    "dices are down by " + downDice.to_s
+end
+
+#event.channel.history(2).each { |msg| puts msg }
+    #if hist[1][0..1] == "/r" 
+    #    puts hist[1] 
+    #end
+#    return nil
 bot.run
