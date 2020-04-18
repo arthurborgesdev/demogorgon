@@ -2,8 +2,9 @@ require 'discordrb'
 
 bot = Discordrb::Commands::CommandBot.new token: ENV['DEMOGORGON_TOKEN'], prefix: '/demo '
 
-bot.command :down do |_event, number|
-    "dices are down by " + number 
+bot.command :down do |event, number|
+    #event << "dices are down by " + number
+    event << event.user 
 end
 
 bot.command(:rand, description: 'Generates a random number 1 and max') do |_event, max|
