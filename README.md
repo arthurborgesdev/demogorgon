@@ -2,8 +2,10 @@
 
 ### Comandos
 
-/demo down X (X é o número pelo qual os dados serão subtraídos)
+/demo down X (subtracts dices values by X)
 
-/demo rand X (Os dados são subtraídos por um número randômico de 1 a X)
+/demo rand X (subtracts dices values by 1 to X (randomically) )
+
+/demo dice (show the current value being subtracted)
 
 
