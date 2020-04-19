@@ -1,6 +1,6 @@
-## BOT de Discord para dar downgrade nos dados de uma aventura D&D 
+# Demogorgon - A D&D Discord Bot 
 
-### Comandos
+### Commands
 
 /demo down X (subtracts dices values by X)
 
